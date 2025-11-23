@@ -1,10 +1,12 @@
 import "./App.css";
-import Login from "./components/Login";
+// import Login from "./components/Login";
+import Actions from "./components/Actions";
 
 function App() {
   return (
     <>
-      <Login />
+      {/* <Login /> */}
+      <Actions />
     </>
   );
 }
