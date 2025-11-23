@@ -1,10 +1,8 @@
 [
-  {
-    "username": "blabla",
-    "password": 12345
-  },
-  {
-    "username": "bla1",
-    "password": 11
-  }
+  { "username": "blabla", "password": 12345 },
+  { "username": "bla1", "password": 11 },
+  { "username": "blabla1", "password": "blabla1" },
+  { "username": "blabla123", "password": "blabla123" },
+  { "username": "blabla12345", "password": "blabla12345" },
+  { "username": "hodaya", "password": "hodaya" }
 ]
