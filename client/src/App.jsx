@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/driveHome/:username" element={<DriveHome />}></Route>
+          <Route path="/driveHome/*" element={<DriveHome />}></Route>
         </Routes>
       </BrowserRouter>
     </>

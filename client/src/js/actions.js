@@ -1,6 +1,6 @@
 export async function createFolder(folderName, path) {
   try {
-    fetch("http://localhost:3000/actions", {
+    await fetch("http://localhost:3000/actions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ folderName: folderName, path: path }),
@@ -19,5 +19,18 @@ export async function deleteFolder(folderName, path) {
     });
   } catch (err) {
     console.log(err);
+  }
+}
+
+export async function getFiles(path, setFiles) {
+  try {
+    const res = await fetch(`http://localhost:3000/actions/${path}`);
+    if (!res.ok) {
+      throw Error("Something went wrong");
+    }
+    const data = await res.json();
+    setFiles(data);
+  } catch (e) {
+    console.error(e);
   }
 }

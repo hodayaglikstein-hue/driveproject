@@ -4,9 +4,9 @@ var router = express.Router();
 var fs = require("fs/promises");
 const { error } = require("console");
 
-router.get("/:folderName", async (req, res) => {
+router.get("/*", async (req, res) => {
   try {
-    const folderPath = path.join(__dirname, "../users", req.params.folderName);
+    const folderPath = path.join(__dirname, "../users", req.params[0]);
     const files = await fs.readdir(folderPath);
     res.json(files);
   } catch (err) {
