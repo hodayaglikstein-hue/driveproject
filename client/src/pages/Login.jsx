@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router";
+
 function Login() {
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     const username = e.target.elements.username.value;
@@ -15,6 +18,7 @@ function Login() {
       } else {
         console.log("Logging in!");
         localStorage.setItem("currentUser", username);
+        navigate(`../driveHome/${username}`);
       }
     } catch (e) {
       console.error(e);

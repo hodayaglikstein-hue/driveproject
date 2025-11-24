@@ -7,6 +7,7 @@ const { error } = require("console");
 router.get("/*", async (req, res) => {
   try {
     const folderPath = path.join(__dirname, "../users", req.params[0]);
+    console.log(folderPath);
     const files = await fs.readdir(folderPath);
     res.json(files);
   } catch (err) {
