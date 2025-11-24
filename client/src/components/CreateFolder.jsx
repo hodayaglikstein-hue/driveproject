@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { createFolder } from "../js/actions";
-import { getFiles } from "../js/actions";
+import { createFolder, getFolders } from "../js/actions";
 
 function CreateFolder(props) {
   const [value, setValue] = useState("");
@@ -18,27 +17,20 @@ function CreateFolder(props) {
     pathArr.splice(0, 2);
     path = pathArr.join("/");
     await createFolder(value, path);
-    await getFiles(getPath(), props.setFiles);
+    await getFolders(getPath(), props.setFiles);
     setValue("");
   }
 
   return (
-    <>
+    <div className="create-folder-container">
       <input
         type="text"
+        placeholder="Folder name..."
         value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
+        onChange={(e) => setValue(e.target.value)}
       />
-      <button
-        onClick={() => {
-          createNewFolder(value);
-        }}
-      >
-        New Folder
-      </button>
-    </>
+      <button onClick={() => createNewFolder(value)}>Create Folder</button>
+    </div>
   );
 }
 

@@ -11,10 +11,21 @@ router.post("/", async (req, res) => {
       `${req.body.fileName}`
     );
     console.log(userPath);
-    await fs.writeFile(userPath + ".txt", "blabla");
+    await fs.writeFile(userPath + ".txt", req.body.textValue);
     res.json({ messeage: "The file has been created" });
   } catch (err) {
     res.status(500).json({ error: "File creation failed." });
+  }
+});
+
+router.get("/*", async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, "../users", req.params[0]);
+    console.log(filePath);
+    const content = await fs.readFile(filePath, "utf8");
+    res.json({ text: content });
+  } catch (err) {
+    res.status(500).json({ error: "Error getting files" });
   }
 });
 

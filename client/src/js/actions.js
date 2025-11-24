@@ -22,7 +22,7 @@ export async function deleteFolder(folderName, path) {
   }
 }
 
-export async function getFiles(path, setFiles) {
+export async function getFolders(path, setFiles) {
   try {
     const res = await fetch(`http://localhost:3000/actions/${path}`);
     if (!res.ok) {

@@ -15,7 +15,7 @@ function Signup() {
       const res = await fetch("http://localhost:3000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: username, password: password }),
       });
       if (!res.ok) {
         throw Error("Something went wrong");
