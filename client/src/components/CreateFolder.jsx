@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { createFolder } from "../js/actions";
 
-function CreateFolder() {
+function CreateFolder(props) {
   const [value, setValue] = useState("");
+  const username = localStorage.getItem("currentUser");
+
   function createNewFolder(value) {
     let path = window.location.pathname;
     const pathArr = path.split("/");
     pathArr.splice(0, 2);
     path = pathArr.join("/");
     createFolder(value, path);
+    props.getFiles(username);
+    setValue("");
   }
 
   return (

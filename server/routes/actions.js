@@ -5,7 +5,11 @@ var fs = require("fs/promises");
 
 router.get("/:folderName", async (req, res) => {
   try {
-    const folderPath = path.join(__dirname, "../users", req.params.folderName);
+    const folderPath = path.join(
+      __dirname,
+      `../users${req.body.path}`,
+      req.params.folderName
+    );
     const files = await fs.readdir(folderPath);
     res.json(files);
   } catch (err) {

@@ -36,7 +36,7 @@ function DriveHome() {
     <>
       <h1>This is home page</h1>
       <h3>{username}</h3>
-      <CreateFolder />
+      <CreateFolder getFiles={getFiles} />
       {files.map((file) => {
         return <div key={randomNum()}>{file}</div>;
       })}
