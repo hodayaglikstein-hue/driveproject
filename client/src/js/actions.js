@@ -10,9 +10,10 @@ export async function createFolder(folderName, path) {
   }
 }
 
-export async function deleteFolder(name) {
+export async function deleteFolder(folderName, path) {
   try {
-    fetch(`http://localhost:3000/actions/${name}`, {
+    const fullPath = path ? `${path}/${folderName}` : folderName;
+    fetch(`http://localhost:3000/actions/${fullPath}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });

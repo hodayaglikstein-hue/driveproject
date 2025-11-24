@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var router = express.Router();
 var fs = require("fs/promises");
+const { error } = require("console");
 
 router.get("/:folderName", async (req, res) => {
   try {
@@ -29,14 +30,20 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:name", async (req, res) => {
+router.delete("/:folderPath(*)", async (req, res) => {
   try {
-    const userPath = path.join(__dirname, "../users", `${req.params.name}`);
+    const userPath = path.join(
+      __dirname,
+      "../users",
+      `${req.params.folderPath}`
+    );
+    console.log(`${req.params.path}`);
     console.log(userPath);
     await fs.rmdir(userPath);
     res.json({ messeage: "The file was successfully deleted." });
   } catch (err) {
     console.log("two");
+    console.log("Error details:", err);
     res.status(500).json({ error: "Error deleting file" });
   }
 });
