@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import CreateFolder from "../components/CreateFolder";
 
 function DriveHome() {
   const [files, setFiles] = useState([]);
@@ -35,7 +36,7 @@ function DriveHome() {
     <>
       <h1>This is home page</h1>
       <h3>{username}</h3>
-      <button>New Folder</button>
+      <CreateFolder />
       {files.map((file) => {
         return <div key={randomNum()}>{file}</div>;
       })}

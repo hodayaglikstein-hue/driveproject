@@ -15,7 +15,11 @@ router.get("/:folderName", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const userPath = path.join(__dirname, "../users", `${req.body.username}`);
+    const userPath = path.join(
+      __dirname,
+      `../users/${req.body.path}`,
+      `${req.body.folderName}`
+    );
     console.log(userPath);
     await fs.mkdir(userPath);
     res.json({ messeage: "The file has been created" });
