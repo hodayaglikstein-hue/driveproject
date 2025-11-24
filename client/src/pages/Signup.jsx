@@ -1,3 +1,4 @@
+import { createFolder } from "../js/actions";
 function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +20,7 @@ function Signup() {
       } else {
         console.log("Logging in!");
         localStorage.setItem("currentUser", username);
+        createFolder(username);
       }
     } catch (e) {
       console.error(e);
