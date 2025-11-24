@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router";
 import { createFolder } from "../js/actions";
 function Signup() {
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     const username = e.target.elements.username.value;
@@ -20,7 +22,8 @@ function Signup() {
       } else {
         console.log("Logging in!");
         localStorage.setItem("currentUser", username);
-        createFolder(username);
+        await createFolder(username, "");
+        navigate(`../driveHome/${username}`);
       }
     } catch (e) {
       console.error(e);
