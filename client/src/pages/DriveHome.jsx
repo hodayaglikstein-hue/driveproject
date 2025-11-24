@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import CreateFolder from "../components/CreateFolder";
 import DeleteFolder from "../components/DeleteFolder";
 import { getFiles } from "../js/actions";
+import RenameFolder from "../components/RenameFolder";
 
 function DriveHome() {
   const [files, setFiles] = useState([]);
@@ -68,6 +69,7 @@ function DriveHome() {
               {file}
             </span>
             <DeleteFolder folderName={file} setFiles={setFiles} />
+            <RenameFolder folderName={file} setFiles={setFiles} />{" "}
           </div>
         );
       })}

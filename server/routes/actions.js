@@ -16,6 +16,7 @@ router.get("/*", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  console.log("actions POST request", req.host);
   try {
     const userPath = path.join(
       __dirname,
@@ -46,6 +47,23 @@ router.delete("/:folderPath(*)", async (req, res) => {
     console.log("two");
     console.log("Error details:", err);
     res.status(500).json({ error: "Error deleting file" });
+  }
+});
+
+router.patch("/", async (req, res) => {
+  try {
+    console.log("called", req.host);
+    const oldPath = req.body.oldPath;
+    const newPath = req.body.newPath;
+    console.log("oldPath", oldPath);
+    console.log("newPat", newPath);
+    const userPathOld = path.join(__dirname, "../users", oldPath);
+    const userPathNew = path.join(__dirname, "../users", newPath);
+    await fs.rename(userPathOld, userPathNew);
+    res.json({ messeage: "Folder name changed successfully." });
+  } catch (err) {
+    console.log("Error details:", err);
+    res.status(500).json({ error: err.message });
   }
 });
 
