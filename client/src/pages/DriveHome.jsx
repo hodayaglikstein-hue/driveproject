@@ -5,6 +5,7 @@ import DeleteFolder from "../components/DeleteFolder";
 import { getFolders } from "../js/actions";
 import CreateFile from "../components/CreateFile";
 import ReadFile from "../components/ReadFile";
+import RenameFolder from "../components/RenameFolder";
 
 function DriveHome() {
   const [files, setFiles] = useState([]);
@@ -78,19 +79,21 @@ function DriveHome() {
         {files.map((file, index) => {
           const fullPath = getPath() + "/" + file;
           return (
-            <div
-              key={file + index}
-              className="file-item"
-              onClick={() => updateURL(file, fullPath)}
-            >
-              <div className="file-icon">
-                {file.includes(".txt") ? "📄" : "📁"}
+            <div key={file + index} className="file-item">
+              <div onClick={() => updateURL(file, fullPath)}>
+                <div className="file-icon">
+                  {file.includes(".txt") ? "📄" : "📁"}
+                </div>
+                <div className="file-name">{file}</div>
               </div>
-              <div className="file-name">{file}</div>
+
               {file.includes(".txt") ? (
                 ""
               ) : (
-                <DeleteFolder folderName={file} setFiles={setFiles} />
+                <>
+                  <DeleteFolder folderName={file} setFiles={setFiles} />
+                  <RenameFolder folderName={file} setFiles={setFiles} />
+                </>
               )}
             </div>
           );

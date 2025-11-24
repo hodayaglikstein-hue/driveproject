@@ -60,7 +60,7 @@ router.patch("/", async (req, res) => {
     const userPathOld = path.join(__dirname, "../users", oldPath);
     const userPathNew = path.join(__dirname, "../users", newPath);
     await fs.rename(userPathOld, userPathNew);
-    res.json({ messeage: "Folder name changed successfully." });
+    res.json({ message: "Folder name changed successfully." });
   } catch (err) {
     console.log("Error details:", err);
     res.status(500).json({ error: err.message });

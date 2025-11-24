@@ -42,19 +42,12 @@ export async function renameFolder(
 ) {
   try {
     console.log("renameFolder Called!");
-    const arr = currentPath.split("/");
-    arr.pop();
-    const savePath = arr.join("/");
-    console.log(savePath);
-
-    // const oldFullPath = currentPath
-    //   ? `${currentPath}/${oldFolderName}`
-    //   : oldFolderName;
-    // const newFullPath = currentPath
-    //   ? `${currentPath}/${newFolderName}`
-    //   : newFolderName;
-    const oldFullPath = `${savePath}/${oldFolderName}`;
-    const newFullPath = `${savePath}/${newFolderName}`;
+    const oldFullPath = currentPath
+      ? `${currentPath}/${oldFolderName}`
+      : oldFolderName;
+    const newFullPath = currentPath
+      ? `${currentPath}/${newFolderName}`
+      : newFolderName;
 
     console.log("oldFullPath", oldFullPath);
     console.log("newFullPath", newFullPath);

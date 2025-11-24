@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { renameFolder } from "../js/actions";
-import { getFiles } from "../js/actions";
+import { getFolders } from "../js/actions";
 
 function RenameFolder(props) {
   const [value, setValue] = useState("");
@@ -19,7 +19,7 @@ function RenameFolder(props) {
     path = pathArr.join("/");
     const oldFolderName = props.folderName;
     await renameFolder(oldFolderName, value, path);
-    await getFiles(getPath(), props.setFiles);
+    await getFolders(getPath(), props.setFiles);
     setValue("");
   }
 
