@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
       const usersData = JSON.parse(data);
       const user = findUser(usersData, req.body.username);
       if (user) {
-        if (user.password === JSON.parse(req.body.password)) {
+        if (user.password === req.body.password) {
           return res.status(200).send("Logging in!");
         } else {
           return res.status(401).send("Something is wrong");

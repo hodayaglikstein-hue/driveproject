@@ -3,6 +3,16 @@ var path = require("path");
 var router = express.Router();
 var fs = require("fs/promises");
 
+router.get("/:folderName", async (req, res) => {
+  try {
+    const folderPath = path.join(__dirname, "../users", req.params.folderName);
+    const files = await fs.readdir(folderPath);
+    res.json(files);
+  } catch (err) {
+    res.status(500).json({ error: "Error getting files" });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const userPath = path.join(__dirname, "../users", `${req.body.username}`);
