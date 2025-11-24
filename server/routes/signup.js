@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
       } else {
         const newUser = {
           username: req.body.username,
-          password: req.body.username,
+          password: req.body.password,
         };
         usersData.push(newUser);
         fs.writeFile(usersPath, JSON.stringify(usersData), (err) => {

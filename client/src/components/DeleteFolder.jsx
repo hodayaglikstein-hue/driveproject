@@ -1,5 +1,4 @@
-import { deleteFolder } from "../js/actions";
-import { getFiles } from "../js/actions";
+import { deleteFolder, getFolders } from "../js/actions";
 
 function getPath() {
   let path = window.location.pathname;
@@ -15,7 +14,7 @@ function DeleteFolder(props) {
     pathArr.splice(0, 2);
     path = pathArr.join("/");
     await deleteFolder(value, path);
-    await getFiles(getPath(), props.setFiles);
+    await getFolders(getPath(), props.setFiles);
   }
 
   return (

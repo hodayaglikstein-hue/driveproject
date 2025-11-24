@@ -13,7 +13,7 @@ export async function createFolder(folderName, path) {
 export async function deleteFolder(folderName, path) {
   try {
     const fullPath = path ? `${path}/${folderName}` : folderName;
-    fetch(`http://localhost:3000/actions/${fullPath}`, {
+    await fetch(`http://localhost:3000/actions/${fullPath}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
@@ -22,7 +22,7 @@ export async function deleteFolder(folderName, path) {
   }
 }
 
-export async function getFiles(path, setFiles) {
+export async function getFolders(path, setFiles) {
   try {
     const res = await fetch(`http://localhost:3000/actions/${path}`);
     if (!res.ok) {
