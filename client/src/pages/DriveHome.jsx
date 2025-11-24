@@ -65,6 +65,7 @@ function DriveHome() {
               updateURL(file);
             }}
           >
+            <DeleteFolder />
             {file}
           </div>
         );
