@@ -59,14 +59,15 @@ function DriveHome() {
       <CreateFolder setFiles={setFiles} />
       {files.map((file, index) => {
         return (
-          <div
-            key={file + "" + index}
-            onClick={() => {
-              updateURL(file);
-            }}
-          >
-            <DeleteFolder />
-            {file}
+          <div key={file + "" + index}>
+            <span
+              onClick={() => {
+                updateURL(file);
+              }}
+            >
+              {file}
+            </span>
+            <DeleteFolder folderName={file} setFiles={setFiles} />
           </div>
         );
       })}

@@ -1,28 +1,28 @@
-import { useState } from "react";
 import { deleteFolder } from "../js/actions";
+import { getFiles } from "../js/actions";
 
-function DeleteFolder() {
-  const [value, setValue] = useState("");
-  function deletee(value) {
+function getPath() {
+  let path = window.location.pathname;
+  const pathArr = path.split("/");
+  pathArr.splice(0, 2);
+  return pathArr.join("/");
+}
+
+function DeleteFolder(props) {
+  async function deletee(value) {
     let path = window.location.pathname;
     const pathArr = path.split("/");
     pathArr.splice(0, 2);
     path = pathArr.join("/");
-    deleteFolder(value, path);
+    await deleteFolder(value, path);
+    await getFiles(getPath(), props.setFiles);
   }
 
   return (
     <>
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-      />
       <button
         onClick={() => {
-          deletee(value);
+          deletee(props.folderName);
         }}
       >
         delete Folder
